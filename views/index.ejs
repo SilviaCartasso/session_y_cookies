@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% if (session.user) { %>
+      <p> <%= session.user.name %> gracias por visitarnos </p>
+
+    <% } %>
+
+<body>
+  <% if (locals.session && session.user) { %>
+      <style>
+          body {background-color: <%= session.user.color %>}
+        </style>
+          <% } %>
+    
+  </body>
+</html>
