@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+
 </head>
 
 <body>
@@ -14,7 +16,8 @@
           </style>
             <% } %>
     <main>
-    <section>
+    <section class="form_section">
+        <h1>Práctica Integradora Session y Cookies</h1>
         <form action="/users/form" method="post">
             <div>
                 <label for="name">Escriba su nombre</label>
@@ -57,23 +60,41 @@
                 <label for="recordarColor">Recordar color</label>
                 <input type="checkbox" name="recordarColor" id="recordarColor">
             </div>
+            <% if (locals.session && session.user) { %>
+
             <div>
-                <a href="/users/forget"><button type="button">Olvidar el color</button></a>
+                <a href="/users/forget"><button class="olvidar" type="button">Olvidar el color</button></a>
+                <a href="/">Probar si el color se visualiza en segunda vista aquí</a>
             </div>
+            <% } %>
             <div>
                 <button type="submit">Enviar</button>
             </div>
         </form>
         
-        <% if (!cookies) { %>
-         
-                <% if (locals.session && session.user) { %>
-                <p> Hola <%= session.user.name %>, elegiste el color: <%= session.user.color  %>, tu email es:
-                    <%= session.user.email  %> y tu edad <%= session.user.age == "" ? "no fue declarada" : "es: " + session.user.age + " años" %></p>
-
-       <%}%>
-       <% } %>
+        
     </section>
+   
+         
+        <% if (locals.session && session.user) { %>
+        <p> Hola <%= session.user.name %>,</p>
+        <p> elegiste el color: <% if (session.user.color == "red") { %>
+         Rojo
+        <% } %> <% if (session.user.color == "brown") { %>
+         Marron
+        <% } %> <% if (session.user.color == "blue") { %>
+            Azul
+           <% } %> <% if (session.user.color == "yellow") { %>
+            Amarillo
+           <% } %> <% if (session.user.color == "pink") { %>
+            Rosa
+           <% } %>
+    </p>
+        <p>tu email es: <%= session.user.email  %> y</p>
+        <p>tu edad <%= session.user.age == "" ? "no fue declarada" : "es: " + session.user.age + " años" %></p>
+
+<%}%>
+
 </main>
     
 </body>

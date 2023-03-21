@@ -4,11 +4,13 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  <body class="index_body">
     <% if (session.user) { %>
       <p> <%= session.user.name %> gracias por visitarnos </p>
 
-    <% } %>
+    <% } else {%>
+      <p>Aún no iniciaste sesión</p>
+      <% } %>
 
 <body>
   <% if (locals.session && session.user) { %>

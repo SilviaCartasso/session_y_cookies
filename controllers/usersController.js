@@ -27,6 +27,7 @@ module.exports = {
                 age: age,
                
             };
+            console.log(req.body)
 
             req.session.backgroundColor = req.body.color; 
             const backgroundColor= req.session.color
